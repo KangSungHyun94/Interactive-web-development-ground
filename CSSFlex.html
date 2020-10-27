@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interactive Web</title>
+  <style>
+    .container{
+      display:flex;
+      /*flex-direction:column-reverse;*/
+      /*row-reverse,row,column 가능. reverse는 자주안쓰임*/
+      justify-content: center;
+      /*flex-start, center,flex-end,space-between,space-around 가능. 오뎅 축을 기준으로*/
+      align-items:center;
+      /*오뎅 축의 수직방향 정렬임. (디폴트)stretch, flex-start,flex-end,center*/
+      height:80vh;
+      background:gray;
+    }
+    .item{
+      flex-grow:1;
+      /*flex 영향을 받는 item들에게 줄 수 있음.
+      숫자는 어떤 숫자든 상관없음.하지만
+      아이템들 각각에 다른 숫자를 주면 그만큼 비율이됨.
+      그런데 이 비율이란게, 안의 context '여백'의 비율임. */
+      flex-basis:0;
+      /*grow로 비율대로 나눠 가질때, 원래 컨텐츠가 차지하는 영역을 어떻게 할건지 세팅.
+      (디폴트)auto,0. 0으로하니까 레이아웃이 정확히 1의 비율로 되네.(여백의 비율이 아니라)*/
+      /* 그냥 flex:1; 로하면, flex-grow:1;flex-basis:0;flex-shrink:1; 준거처럼 되니,
+      실제론 이렇게 많이씀. grow,shrink는 사실상 거의 같은의미로 받아들여도됨.
+      늘어날때, 줄어들때의 비율을 정함.*/
+
+      border:3px solid black;
+      background:white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">AAA</div>
+    <div class="item">B</div>
+    <div class="item">CCCCCC</div>
+    <div class="item">DDD</div>
+    <div class="item">E</div>
+  </div>
+</body>
+</html>
