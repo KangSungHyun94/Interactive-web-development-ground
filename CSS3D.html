@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interactive</title>
+    <style>
+      .world{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:80vw; /*보이는 가로창의 60%*/
+        height:80vh; /* 보이는 세로창의 60%*/
+        background:#fff000;
+        perspective: 500px; /*얘한테 이걸 주니까 3D효과가 나네, 값은 내 눈과의 거리라고 생각. 가까우면 3D효과가 극적으로 보임*/
+      }
+
+      /*그리고 world에다가 perspective를 주면 3개의 카드가 똑같은 각으로 돌려지는 느낌이 아니라 실제 눈의 위치에 따라 다르게
+      반영 되는것처럼 다르게 반영이 돼있음. 같게 반영을 시키고 싶을때는 world에다가 주는게 아니라, .card 자체의 transform 안에줌.*/
+
+      .card{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:100px;
+        height:150px;
+        margin:1em;
+        border-radius:0.5em; /*em은 현재 컨텍스트의 폰트사이즈를 기준으로함-font-size가 변함에 따라서 radius도 변함*/
+        font-size:1.5rem; /*rem은 html의 폰트사이즈를 기준으로함*/
+        background:red;
+        transform:/*균일하게 엘리멘트 자체에다가 3d효과 주려면 transform에 직접주면됨*/ rotateY(0deg);
+        transition:1s; /*애니메이션 효과를 주네(뒤집는 효과)*/
+      }
+      .world:hover .card{
+        transform:rotateY(180deg);
+      }
+      }
+    </style>
+</head>
+<body>
+  <div class="world">
+    <div class="card">CARD</div>
+    <div class="card">CARD</div>
+    <div class="card">CARD</div>
+  </div>
+</body>
+</html>
