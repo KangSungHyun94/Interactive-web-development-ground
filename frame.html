@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interactive Web</title>
+  <style>
+    @keyframes spaceship-ani{
+      to{
+        background-position:-2550px 0;
+      }
+    }
+    .spaceship{
+      width:150px;
+      height:150px;                 /*no-repeat 다음 0 0은 background-position을 가리 */
+      background:url('') no-repeat 0 0 / auto 150px; /* / 다음 원래 이미지의 크기와 다르게, 가로는 자동을 비율 맞추고, 세로를 150px로 줄이라는거임*/
+      anmation:spaceship-ani 2s infinite steps(17); /*steps(17)을 통해, anmation효과를 17단계로 끊어서 보여달라는거임(가로세로150px 17단계)*/
+    }
+  </style>
+</head>
+<body>
+  <div class="spaceship">
+
+  </div>
+</body>
+</html>
