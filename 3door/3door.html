@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interactive Web</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <style>
+    .stage{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width:100vw;
+      height: 100vh;
+      background:#333;
+      /* perspective: 800px; 부모한테 perspective를 주면 시점에 따라 다르게 보임*/
+    }
+    .door{
+      position: relative;
+      width: 100px;
+      height: 150px;
+    }
+    .door-back{
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+    }
+    .ilbuni{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100px;
+      height: 100px;
+      background-repeat: no-repeat;
+      background-position: 50% 100%; /* 50% 100% 뜻은 가로축으론 가운데, 수직축으론 아래에 깔겠다는 것임. */
+      background-size: contain;
+      transform: translate3d(100%,0,0); /*translate에서 %라는건 해당 .ilbuni의 크기를 100%로 잡음*/
+      transition: 0.5s 0.5s;
+    }
+    .door:nth-child(1) .ilbuni {background-image: url(images/ilbuni_0.png);}
+    .door:nth-child(2) .ilbuni {background-image: url(images/ilbuni_1.png);}
+    .door:nth-child(3) .ilbuni {background-image: url(images/ilbuni_2.png);}
+    .door-body{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+      transform-origin: 0%;
+    }
+    .door:nth-child(1) .door-body{background: rgba(255,0,0,0.7);}
+    .door:nth-child(2) .door-body{background: rgba(0,255,0,0.7);}
+    .door:nth-child(3) .door-body{background: rgba(0,0,255,0.7);}
+    .door-opened .door-body{
+      transform: perspective(800px) rotateY(-110deg);
+    }
+    .door-opened .ilbuni{
+      transform: translate3d(0,0,0);
+    }
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <!-- 레이아웃 안에, 있는 요소들이 촥촥촥 겹쳐있으려면 부모는 렐러티브,자식들은 엡솔루트 -->
+    <div class="door">
+      <div class="door-back">
+          <div class="ilbuni"></div>
+      </div>
+      <div class="door-body"></div>
+    </div>
+    <div class="door">
+      <div class="door-back">
+        <div class="ilbuni"></div>
+      </div>
+      <div class="door-body"></div>
+    </div>
+    <div class="door">
+      <div class="door-back">
+        <div class="ilbuni"></div>
+      </div>
+      <div class="door-body"></div>
+    </div>
+  </div>
+  <script>
+    (function(){
+      const stageElem=document.querySelector('.stage');
+      //현재 활성화된 아이템을 저장 할거임.
+      let currentItem; //★★★94행에서 106행까지 진짜 많이쓰이는 패턴임.
+      //이벤트 헨들러(리스너)함수는 간단해야 좋음.
+
+      function doorHandler(e){
+        const targetElem= e.target;
+
+        if(currentItem){
+        currentItem.classList.remove('door-opened');
+      }
+
+        if(targetElem.classList.contains('door-body')){
+        targetElem.parentNode.classList.add('door-opened');
+        currentItem=targetElem.parentNode;
+        }
+      }
+
+      stageElem.addEventListener('click',doorHandler);
+    })();
+  </script>
+</body>
+</html>
