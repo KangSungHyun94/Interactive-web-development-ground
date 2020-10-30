@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transition/Animation Event</title>
+  <style>
+  @keyframes ball-ani {
+    from{
+      transform:translate(0,0);
+    }
+    to{
+      transform:translate(200px,200px);
+    }
+  }
+
+  .ball{
+    position:absolute;
+    left:0;
+    top:0;
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    background: red;
+    transition:2s;
+  }
+  .ball.end{
+    background:dodgerblue;
+  }
+  </style>
+</head>
+<body>
+  <div class="ball"></div>
+
+  <script>
+    const ballElem = document.querySelector('.ball');
+
+    window.addEventListener('click',function(e){
+      ballElem.style.transform='translate('+(e.clientX-15)+'px, '+(e.clientY-15)+'px)'
+    });
+
+//transitionend, transitionstart
+    ballElem.addEventListener('transitionstart',function(e){
+      ballElem.classList.add('end');
+      console.log(e.elapsedTime);
+      // transition 얼마나 시간이 경과했냐. transition duration이 찍힘
+      console.log(e.propertyName);
+    });
+  </script>
+</body>
+</html>
