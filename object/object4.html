@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object</title>
+  <style>
+    .card{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100px;
+      height:150px;
+      border:2px solid black;
+      border-radius:10px;
+      font-size:3rem;
+      font-weight:900;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function Card(num,color){
+      this.num=num;
+      this.color=color;
+      this.init();
+    }
+
+    //prototype도 객체라서 이렇게 세팅이 가능.
+    Card.prototype={
+      //이 부분이 중요함. console.log(card1); 을 개발자 도구로 확인하면,
+      //proto라는 속성이 있는데 이것도 객체여서 또 속성이있는데 ,
+      //constructor : f Card라고 되어있음. 이부분을 넣어줘야함.;; 아직 잘 이해는 안됨.
+      constructor: Card,
+      init:function() {
+        const mainElem =document.createElement('div');
+        mainElem.style.color=this.color;
+        mainElem.innerHTML=this.num;
+        mainElem.classList.add('card');
+        document.body.appendChild(mainElem);
+      }
+    };
+    const card1 = new Card(1, 'green');
+    const card2 = new Card(7, 'blue');
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object</title>
+</head>
+<body>
+  <h1>Object</h1>
+
+  <script>
+    <!-- const person = new Object(); 이렇게도 객체를 만든다고 함.-->
+    const person={};
+    person.name = '일분이';
+    person.age=10;
+    person.introduce = function(){
+      console.log('안녕하세요? 저는 일분이이고 나이는 10살이에요.');
+    };
+    person.introduce();
+  </script>
+</body>
+</html>

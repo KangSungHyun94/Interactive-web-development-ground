@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object</title>
+</head>
+<body>
+  <h1>Object</h1>
+
+  <script>
+    const person={
+      nickname:'일분이',
+      age:10,
+      introduce:function(){
+        console.log('안녕하세요? 저는 ' + this.nickname + '이고, 나이는 '+this.age+'살 이에요.');
+      }
+    };
+
+    const person2={
+      nickname:'이분이',
+      age:8,
+      introduce:function(){
+        console.log('안녕하세요? 저는 ' + this.nickname + '이고, 나이는 '+this.age+'살 이에요.');
+      }
+    };
+
+    function foo(){
+      console.log(this);
+    };
+
+    foo(); //전역 지역에 this는 window 전역 객체가 찍힘.
+    person.introduce();
+    person2.introduce();
+  </script>
+</body>
+</html>

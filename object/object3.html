@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object</title>
+</head>
+<body>
+  <h1>Object</h1>
+
+  <script>
+    // 생성자(constructor). 관례적으로 대문자로 만듦.
+    function Person(nickname,age){
+      this.nickname = nickname;
+      this.age = age;
+    }
+    //원래 함수에 this 하면 window 객체가 받는데, 여기서 함수가 받는 이유는,
+    //new 를 붙이면 생성자로 알아 듣기 대문임.
+
+    //prototype은 개별 객체들이 공유하는거임. 메모리 관리 효율.
+    Person.prototype.introduce=function(){
+      console.log('안녕하세요? 저는 '+ this.nickname + '이고, 나이는 ' + this.age +'살 이에요.');
+    }
+
+    //인스턴스(instance). person1, person2를 가리킴.
+    const person1 = new Person('일분이',10);
+    const person2 = new Person('이분이',8);
+
+    person1.introduce();
+    person2.introduce();
+  </script>
+</body>
+</html>
