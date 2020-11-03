@@ -1,0 +1,68 @@
+body{
+  font-family:'apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic',
+  sans-serif;
+  -webkit-overflow-scrolling: touch;
+  color:#555;
+  background:#fff000;
+}
+
+.world{
+  position:fixed; /*스크롤해도 화면이 고정이니까. */
+  left:0;
+  top:0;
+  width:100vw; /*창 사이즈로 잡을때는 제일 확실히 잡을 수 있음.*/
+  height:100vh; /*창 사이즈로 잡을때는 제일 확실히 잡을 수 있음.*/
+  perspective:1000px;
+}
+
+.stage{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100vw;
+  height: 100vh;
+  transform-style: preserve-3d; /*인터넷 익스플로어는 11 조차도 존재 안함.*/
+}
+
+.house{
+  /*확대했을때 디폴트 모습은 꽉차니, vw,vh 100으로 줌*/
+  width: 100vw;
+  height: 100vh;
+  transform:translateZ(-490vw);
+  transform-style: preserve-3d;
+}
+
+.wall{
+  position:absolute;
+  left: 0;
+  top: 0;
+  width:100vw;
+  height: 100vh;
+  background:rgba(255,255,255,0.8);
+
+}
+.wall-left{
+  width:1000vw;
+  background: #f8f8f8;
+  transform:rotateY(90deg) translateZ(-500vw);
+}
+.wall-right{
+  width:1000vw;
+  background: #f8f8f8;
+  transform:rotateY(90deg) translateZ(-400vw);
+}
+.wall-front-a{transform:translateZ(300vw);}
+.wall-front-b{transform:translateZ(50vw);}
+.wall-front-c{transform:translateZ(-200vw);}
+.wall-front-d{transform:translateZ(-500vw);}
+
+.wall-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height:100vh;
+
+}
+.wall-title{
+  font-size: 5rem;
+}
