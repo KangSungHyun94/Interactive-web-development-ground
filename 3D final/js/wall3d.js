@@ -3,6 +3,7 @@
   const barElem = document.querySelector('.progress-bar');
   const stageElem=document.querySelector('.stage');
   const mousePos={ x:0, y:0};
+  const selectCharacterElem=document.querySelector('.select-character');
 //★스크롤 바의 길이가 눈에 보이는 창의 높이임.(window.innerHeight)
 //그래서 스크롤하는 영역은. 전체 크기 - 스크롤바의 길이
 //pageYoffset의 최대값은 maxscrollvalue와 같은 값임
@@ -32,8 +33,14 @@ function resizeHandler(){
 
   stageElem.addEventListener('click',function(e){
     new Character({
-      xPos:e.clientX / window.innerWidth * 100
+      xPos:e.clientX / window.innerWidth * 100,
+      speed :Math.random() * 0.5 + 0.2
     });
+  });
+
+  selectCharacterElem.addEventListener('click',function(e){
+    const value = e.target.getAttribute('data-char');
+    document.body.setAttribute('data-char',value);
   });
 
   resizeHandler();

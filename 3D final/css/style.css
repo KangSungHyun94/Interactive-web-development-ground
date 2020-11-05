@@ -24,6 +24,11 @@ body{
   -webkit-overflow-scrolling: touch;
   color:#555;
   background:#fff000;
+  transition:background .5s;
+}
+
+body[data-char='ragirl']{
+  background:#ff7200;
 }
 
 .world{
